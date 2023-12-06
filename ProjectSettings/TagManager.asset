@@ -11,6 +11,8 @@ TagManager:
   - win
   - bullet
   - coin
+  - milk
+  - Milk
   layers:
   - Default
   - TransparentFX
