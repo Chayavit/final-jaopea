@@ -13,14 +13,15 @@ TagManager:
   - coin
   - milk
   - Milk
+  - nodamage
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - wall
   - Water
   - UI
-  - 
+  - bullet
   - 
   - 
   - 

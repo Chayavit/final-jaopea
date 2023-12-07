@@ -13,7 +13,7 @@ public class Timer : MonoBehaviour
         if (player.CompareTag("win"))
         {
             // เปลี่ยนไปยัง Scene Menu 3
-            SceneManager.LoadScene("3");
+            SceneManager.LoadScene("menu 2");
         }
     }
     void Update()
