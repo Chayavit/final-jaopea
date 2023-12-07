@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class CoinCollector : MonoBehaviour
@@ -9,13 +8,19 @@ public class CoinCollector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-            if (other.gameObject.tag == "item")
-            {
-                Destroy(other.gameObject);
-                score++;
-                
-            }
-        
+        if (other.gameObject.tag == "item")
+        {
+            Destroy(other.gameObject);
+            score++;
+
+            // ปรับปรุง UI ทุกครั้งที่มีการเปลี่ยนแปลงของคะแนน
+            UpdateScoreUI();
+        }
     }
 
+    private void UpdateScoreUI()
+    {
+        // แสดงผลบน UI
+        scoreText.text = score + " Point";
+    }
 }

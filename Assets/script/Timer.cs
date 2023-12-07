@@ -8,6 +8,14 @@ public class Timer : MonoBehaviour
     public float targetTime = 120f; // 2 นาที
     public Text timerText;
 
+    private void OnTriggerEnter(Collider player)
+    {
+        if (player.CompareTag("win"))
+        {
+            // เปลี่ยนไปยัง Scene Menu 3
+            SceneManager.LoadScene("3");
+        }
+    }
     void Update()
     {
         timer += Time.deltaTime;
