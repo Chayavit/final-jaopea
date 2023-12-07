@@ -9,9 +9,11 @@ public class shoot : MonoBehaviour
     public float bulletSpeed;
     [SerializeField]
     private Animator anim;
+    private bool isCanShoot;
 
     private void Start()
     {
+        isCanShoot = false;
         StartCoroutine(ShootBullets());
     }
 
@@ -19,16 +21,24 @@ public class shoot : MonoBehaviour
     {
         while (true)
         {
-            anim.SetTrigger("Shoot");
-            yield return new WaitForSeconds(1.0f);
-            // ยิงกระสุน
-            for (int i = 0; i < bulletsPerSecond; i++)
+            if (isCanShoot)
             {
-                ShootBullet();
-                yield return new WaitForSeconds(0.05f);
+                anim.SetTrigger("Shoot");
+                yield return new WaitForSeconds(1.0f);
+                // ยิงกระสุน
+                for (int i = 0; i < bulletsPerSecond; i++)
+                {
+                    ShootBullet();
+                    yield return new WaitForSeconds(0.05f);
+                }
             }
             yield return new WaitForSeconds(2.5f);
         }
+    }
+
+    public void SetCanShoot(bool isCanShoot)
+    {
+        this.isCanShoot = isCanShoot;
     }
 
     void ShootBullet()
