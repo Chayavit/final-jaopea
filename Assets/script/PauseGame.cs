@@ -25,7 +25,7 @@ public class PauseGame : MonoBehaviour
 
     void Pause()
     {
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         isGamePaused = true;
 
         // แสดง UI ที่บอกให้ผู้เล่นเล่นต่อหรือเริ่มใหม่

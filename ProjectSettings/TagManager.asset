@@ -15,6 +15,7 @@ TagManager:
   - Milk
   - nodamage
   - heal
+  - cover
   layers:
   - Default
   - TransparentFX

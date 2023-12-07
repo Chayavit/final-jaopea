@@ -5,6 +5,15 @@ public class CoinCollector : MonoBehaviour
 {
     public Text scoreText;
     private int score = 0;
+    public AudioClip collectSound;
+    private AudioSource audioSource;
+    private void Start()
+    {
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = collectSound;
+        audioSource.playOnAwake = false;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "item")
@@ -12,11 +21,15 @@ public class CoinCollector : MonoBehaviour
             Destroy(other.gameObject);
             score++;
 
+            PlayCollectSound();
             // ปรับปรุง UI ทุกครั้งที่มีการเปลี่ยนแปลงของคะแนน
             UpdateScoreUI();
         }
     }
-
+    private void PlayCollectSound()
+    {
+        audioSource.Play();
+    }
     private void UpdateScoreUI()
     {
         // แสดงผลบน UI

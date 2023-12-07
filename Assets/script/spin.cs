@@ -1,12 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class spin : MonoBehaviour
+public class ItemController : MonoBehaviour
 {
-    public float rotationSpeed = 50f; // ความเร็วในการหมุน
+    public float spinSpeed = 1f;
 
     void Update()
     {
-        // ให้ไอเท็มหมุนรอบๆ ตามแกน Y
-        transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+        this.transform.Rotate(new Vector3(0, 0, spinSpeed));
     }
 }

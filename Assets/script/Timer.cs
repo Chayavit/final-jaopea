@@ -5,17 +5,9 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     private float timer = 0f;
-    public float targetTime = 120f; // 2 นาที
+    public float targetTime = 186f; // 3 นาที
     public Text timerText;
 
-    private void OnTriggerEnter(Collider player)
-    {
-        if (player.CompareTag("win"))
-        {
-            // เปลี่ยนไปยัง Scene Menu 3
-            SceneManager.LoadScene("menu 2");
-        }
-    }
     void Update()
     {
         timer += Time.deltaTime;
@@ -30,6 +22,7 @@ public class Timer : MonoBehaviour
         // แสดงเวลาที่เหลือ
         DisplayTime(targetTime - timer);
     }
+
 
     void DisplayTime(float timeToDisplay)
     {
