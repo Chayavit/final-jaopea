@@ -9,7 +9,7 @@ public class HealthBar : MonoBehaviour
     public Image hpBar;
     public float maxHP;
     public float curHP;
-    bool iscantdo = false;
+    bool iscantdo = true;
 
     private void Update()
     {
@@ -28,6 +28,15 @@ public class HealthBar : MonoBehaviour
         {
             curHP -= val;
         }
-        
+    }
+
+    public void IncreaseHP(float val)
+    {
+            curHP += val;
+            curHP = Mathf.Clamp(curHP, 0f, maxHP);
+    }
+    public void setInvulnerable(bool iscantdo) 
+    {
+        this.iscantdo = iscantdo;
     }
 }

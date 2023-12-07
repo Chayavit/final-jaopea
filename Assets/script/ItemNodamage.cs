@@ -3,9 +3,8 @@ using UnityEngine;
 
 public class ItemNodamage : MonoBehaviour
 {
-    private bool isInvulnerable = false;
     public float invulnerabilityTime = 5f;
-
+    public HealthBar hp;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "nodamage")
@@ -16,9 +15,10 @@ public class ItemNodamage : MonoBehaviour
     }
     private IEnumerator cooldowngamemode0()
     {
-        isInvulnerable = true;
+        hp.setInvulnerable(false);
         yield return new WaitForSeconds(invulnerabilityTime);
-        isInvulnerable = false;
+        hp.setInvulnerable(true);
 
     }
+
 }
