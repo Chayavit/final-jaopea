@@ -6,16 +6,17 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     public Image hpBar;
-    private float maxhpVal = 25.0f;
-    public float hpVal;
+    public float maxHP;
+    public float curHP;
 
     private void Update()
     {
-        hpBar.fillAmount = hpVal / maxhpVal;
+        Cursor.lockState = CursorLockMode.Locked;
+        hpBar.fillAmount = curHP / maxHP;
     }
 
     public void DecreaseHP(float val)
     {
-        hpVal -= val;
+        curHP -= val;
     }
 }

@@ -5,13 +5,13 @@ public class shoot : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform bulletSpawnPoint;
-    public int bulletsPerSecond = 3; // จำนวนกระสุนที่ต้องการยิงต่อวินาที
-    public float shootInterval = 3f;
+    public int bulletsPerSecond = 3;
     public float bulletSpeed;
+    [SerializeField]
+    private Animator anim;
 
     private void Start()
     {
-        // เริ่ม Coroutine สำหรับการยิงกระสุน
         StartCoroutine(ShootBullets());
     }
 
@@ -19,31 +19,27 @@ public class shoot : MonoBehaviour
     {
         while (true)
         {
-            // พักยิงกระสุน 3 วินาที
-            yield return new WaitForSeconds(shootInterval);
-
+            anim.SetTrigger("Shoot");
+            yield return new WaitForSeconds(1.0f);
             // ยิงกระสุน
             for (int i = 0; i < bulletsPerSecond; i++)
             {
                 ShootBullet();
-                yield return new WaitForSeconds(1f / bulletsPerSecond); // พักเวลาระหว่างการยิง 1 ลูก
+                yield return new WaitForSeconds(0.05f);
             }
+            yield return new WaitForSeconds(2.5f);
         }
     }
 
     void ShootBullet()
     {
-        // Instantiate กระสุนที่ตำแหน่ง bulletSpawnPoint
-        Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-        Rigidbody bulletRigidbody = bulletPrefab.GetComponent<Rigidbody>();
-        if (bulletRigidbody != null)
+        GameObject newBullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+        Rigidbody rb = newBullet.GetComponent<Rigidbody>();
+        if (rb != null)
         {
-            // กำหนดความเร็วให้กับ Rigidbody เพื่อให้ prefab มีความเร็วเพิ่มขึ้นและพุ่งไปด้านหน้า
-            bulletRigidbody.velocity = bulletPrefab.transform.forward * 1700f;
+            Vector3 direction = Quaternion.Euler(0, transform.parent.eulerAngles.y, 0) * Vector3.forward;
+            rb.velocity = direction * bulletSpeed;
         }
-        else
-        {
-            Debug.LogError("Prefab is missing Rigidbody component.");
-        }
+        Destroy(newBullet, 2.0f);
     }
 }
