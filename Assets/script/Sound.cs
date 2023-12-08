@@ -10,6 +10,7 @@ public class Sound : MonoBehaviour
     {
         // ตั้งค่าค่าเริ่มต้นของ Slider
         volumeSlider.value = DataManager.instance.GetSoundVolumn();
+        audioSource.volume = volumeSlider.value;
 
         // ตั้ง Event Listener สำหรับ Slider
         volumeSlider.onValueChanged.AddListener(delegate { OnSliderValueChanged(); });
