@@ -30,6 +30,7 @@ public class PauseGame : MonoBehaviour
 
         // แสดง UI ที่บอกให้ผู้เล่นเล่นต่อหรือเริ่มใหม่
         pauseMenuUI.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void ResumeGame()
@@ -39,5 +40,6 @@ public class PauseGame : MonoBehaviour
 
         // ซ่อน UI เมื่อเล่นต่อ
         pauseMenuUI.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

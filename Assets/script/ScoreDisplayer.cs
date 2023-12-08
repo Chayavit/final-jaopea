@@ -10,6 +10,6 @@ public class ScoreDisplayer : MonoBehaviour
     private TextMeshProUGUI scoreText;
     private void Start()
     {
-        scoreText.text = "Score: " + ScoreManager.instance.GetScore().ToString();
+        scoreText.text = "Score: " + DataManager.instance.GetScore().ToString();
     }
 }

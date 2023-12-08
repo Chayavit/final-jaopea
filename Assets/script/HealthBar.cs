@@ -11,8 +11,6 @@ public class HealthBar : MonoBehaviour
     public float curHP;
     bool iscantdo = true;
     [SerializeField]
-    private ScoreManager scoreManager;
-    [SerializeField]
     private CoinCollector coinColect;
 
     private void Update()
@@ -22,7 +20,7 @@ public class HealthBar : MonoBehaviour
 
         if (curHP <= 0)
         {
-            scoreManager.FinalizeScore(coinColect.GetPlayerScore());
+            DataManager.instance.FinalizeScore(coinColect.GetPlayerScore());
             SceneManager.LoadScene("menu 3");
         }
     }
@@ -37,8 +35,8 @@ public class HealthBar : MonoBehaviour
 
     public void IncreaseHP(float val)
     {
-            curHP += val;
-            curHP = Mathf.Clamp(curHP, 0f, maxHP);
+        curHP += val;
+        curHP = Mathf.Clamp(curHP, 0f, maxHP);
     }
     public void setInvulnerable(bool iscantdo) 
     {

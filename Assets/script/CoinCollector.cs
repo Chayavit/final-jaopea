@@ -20,7 +20,7 @@ public class CoinCollector : MonoBehaviour
         {
             Destroy(other.gameObject);
             score++;
-            ScoreManager.instance.SetScore(score);
+            DataManager.instance.FinalizeScore(score);
 
             PlayCollectSound();
             // ปรับปรุง UI ทุกครั้งที่มีการเปลี่ยนแปลงของคะแนน
