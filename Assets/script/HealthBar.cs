@@ -10,6 +10,10 @@ public class HealthBar : MonoBehaviour
     public float maxHP;
     public float curHP;
     bool iscantdo = true;
+    [SerializeField]
+    private ScoreManager scoreManager;
+    [SerializeField]
+    private CoinCollector coinColect;
 
     private void Update()
     {
@@ -18,6 +22,7 @@ public class HealthBar : MonoBehaviour
 
         if (curHP <= 0)
         {
+            scoreManager.FinalizeScore(coinColect.GetPlayerScore());
             SceneManager.LoadScene("menu 3");
         }
     }
