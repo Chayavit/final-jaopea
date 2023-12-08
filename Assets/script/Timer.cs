@@ -7,6 +7,10 @@ public class Timer : MonoBehaviour
     private float timer = 0f;
     public float targetTime = 186f; // 3 นาที
     public Text timerText;
+    [SerializeField]
+    private ScoreManager scoreManager;
+    [SerializeField]
+    private CoinCollector coinColect;
 
     void Update()
     {
@@ -16,6 +20,7 @@ public class Timer : MonoBehaviour
         if (timer >= targetTime)
         {
             // เปลี่ยนฉากไปที่ "กล้อง1"
+            scoreManager.FinalizeScore(coinColect.GetPlayerScore());
             SceneManager.LoadScene("menu 3");
         }
 

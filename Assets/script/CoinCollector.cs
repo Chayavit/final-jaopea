@@ -20,6 +20,7 @@ public class CoinCollector : MonoBehaviour
         {
             Destroy(other.gameObject);
             score++;
+            ScoreManager.instance.SetScore(score);
 
             PlayCollectSound();
             // ปรับปรุง UI ทุกครั้งที่มีการเปลี่ยนแปลงของคะแนน
@@ -34,5 +35,9 @@ public class CoinCollector : MonoBehaviour
     {
         // แสดงผลบน UI
         scoreText.text = score + " Point";
+    }
+    public int GetPlayerScore()
+    {
+        return score;
     }
 }
