@@ -15,6 +15,10 @@ public class HealthBar : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            IncreaseHP(10f);
+        }
         //Cursor.lockState = CursorLockMode.Locked;
         hpBar.fillAmount = curHP / maxHP;
 
